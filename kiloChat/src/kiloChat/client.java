@@ -27,6 +27,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
+
 public class client extends JFrame {
 
 
@@ -34,10 +36,13 @@ public class client extends JFrame {
 	private JPanel contentPane;
 	
 	
-	private String name, IP;
-	private int port;
+	protected String name, IP;
+	protected int port;
 	private JTextField txtMessageBox;
 	private JTextArea txtrHistory;
+	
+	protected static Thread send;
+
 	/**
 	 * Launch the application.
 	 */

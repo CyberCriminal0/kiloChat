@@ -7,15 +7,18 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
+
 public class networking {
 
 	protected DatagramSocket socket;
 	protected InetAddress ip;
+	protected int dataport;
 	
 	protected boolean connect(String address, int port){
 		
 		
 		try {
+			this.dataport = port;
 			socket = new DatagramSocket(port);
 			this.ip = InetAddress.getByName(address);
 		} catch (UnknownHostException e) {
@@ -45,6 +48,19 @@ public class networking {
 	
 	return message;
 	
+	}
+	
+	protected void send(final byte[] data){
+		client.send = new Thread("Send"){
+			public void run(){
+		DatagramPacket packet = new DatagramPacket(data, data.length, ip, dataport);
+		try {
+			socket.send(packet);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+			}
+		};
 	}
 	
 }
