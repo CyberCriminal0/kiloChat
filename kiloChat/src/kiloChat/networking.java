@@ -1,5 +1,7 @@
 package kiloChat;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
@@ -14,8 +16,8 @@ public class networking {
 		
 		
 		try {
-			socket = new DatagramSocket();
-			ip = InetAddress.getByName(address);
+			socket = new DatagramSocket(port);
+			this.ip = InetAddress.getByName(address);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 			return false;
@@ -27,6 +29,22 @@ public class networking {
 		
 		return true;
 		
+	}
+	
+	protected String recieve(){
+		byte[] data = new byte[1024];
+		DatagramPacket packet = new DatagramPacket(data, data.length);
+		
+	try{	
+		socket.receive(packet);
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+		
+	String message = new String(packet.getData());
+	
+	return message;
+	
 	}
 	
 }
