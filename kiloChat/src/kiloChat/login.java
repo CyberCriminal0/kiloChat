@@ -53,7 +53,6 @@ public class login extends JFrame {
 		contentPane.add(lblName);
 		
 		txtName = new JTextField();
-		txtName.setText("Name");
 		txtName.setBounds(80, 70, 134, 30);
 		contentPane.add(txtName);
 		txtName.setColumns(10);
@@ -63,7 +62,6 @@ public class login extends JFrame {
 		contentPane.add(lblIpAddress);
 		
 		txtAddress = new JTextField();
-		txtAddress.setText("Address");
 		txtAddress.setColumns(10);
 		txtAddress.setBounds(80, 170, 134, 30);
 		contentPane.add(txtAddress);
@@ -73,7 +71,6 @@ public class login extends JFrame {
 		contentPane.add(lblPort);
 		
 		textPort = new JTextField();
-		textPort.setText("Port");
 		textPort.setColumns(10);
 		textPort.setBounds(80, 267, 134, 30);
 		contentPane.add(textPort);

@@ -75,10 +75,13 @@ public class client extends JFrame {
 		
 		JTextArea txtrHistory = new JTextArea();
 		GridBagConstraints gbc_txtrHistory = new GridBagConstraints();
+		txtrHistory.setEditable(false);
 		gbc_txtrHistory.insets = new Insets(0, 0, 5, 5);
 		gbc_txtrHistory.fill = GridBagConstraints.BOTH;
 		gbc_txtrHistory.gridx = 1;
 		gbc_txtrHistory.gridy = 1;
+		gbc_txtrHistory.gridwidth = 2;
+		gbc_txtrHistory.insets = new Insets(20, 20, 20 ,20);
 		contentPane.add(txtrHistory, gbc_txtrHistory);
 		
 		txtMessageBox = new JTextField();
@@ -96,6 +99,9 @@ public class client extends JFrame {
 		gbc_btnSend.gridx = 2;
 		gbc_btnSend.gridy = 2;
 		contentPane.add(btnSend, gbc_btnSend);
+		
+		requestFocus();
+		txtMessageBox.requestFocus();
 		
 		setVisible(true);
 
