@@ -11,6 +11,9 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class login extends JFrame {
 
@@ -22,6 +25,8 @@ public class login extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	private LoginBttn button = new LoginBttn();
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -85,5 +90,10 @@ public class login extends JFrame {
 		txtAddress.setColumns(10);
 		txtAddress.setBounds(80, 267, 134, 30);
 		contentPane.add(txtAddress);
+		
+		JButton btnNewButton = new JButton("Login");
+		btnNewButton.addActionListener(button);
+		btnNewButton.setBounds(104, 338, 89, 23);
+		contentPane.add(btnNewButton);
 	}
 }
