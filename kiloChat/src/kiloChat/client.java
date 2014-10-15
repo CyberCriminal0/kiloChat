@@ -49,6 +49,7 @@ public class client extends JFrame {
 	public client(String name, String address, int port) {
 		setTitle("Kilochat Client");
 		
+		networking socket1 = new networking();
 		
 		this.name = name;
 		this.IP = address;
@@ -56,8 +57,18 @@ public class client extends JFrame {
 		newWindow();
 		console("Working...");
 		console("Hello " + this.name + ", now attempting connection to " + address + ":" + port);
+		boolean connected = socket1.connect(address, port);
+		
+		if(!connected){
+			System.err.println("Connection failed!");
+			console("Connection failed!");
+		}
 		
 	}
+	
+	
+
+	
 	
 	private void newWindow(){
 		
@@ -68,6 +79,7 @@ public class client extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(650, 450);
@@ -93,9 +105,10 @@ public class client extends JFrame {
 		
 		scrollPar.insets = new Insets(0, 0, 5, 5);
 		scrollPar.fill = GridBagConstraints.BOTH;
-		scrollPar.gridx = 1;
-		scrollPar.gridy = 1;
-		scrollPar.gridwidth = 2;
+		scrollPar.gridx = 0;
+		scrollPar.gridy = 0;
+		scrollPar.gridwidth = 3;
+		scrollPar.gridheight = 2;
 		scrollPar.insets = new Insets(20, 20, 20 ,20);
 		contentPane.add(scroll, scrollPar);
 		
