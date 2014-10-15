@@ -18,27 +18,14 @@ import java.awt.event.ActionEvent;
 public class login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtName;
-	private JTextField txtAddress;
-	private JTextField textPort;
+	protected JTextField txtName;
+	protected JTextField textPort;
+	protected JTextField txtAddress;
 
 	/**
 	 * Launch the application.
 	 */
-	private LoginBttn button = new LoginBttn();
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					login frame = new login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -75,25 +62,52 @@ public class login extends JFrame {
 		lblIpAddress.setBounds(111, 129, 82, 30);
 		contentPane.add(lblIpAddress);
 		
-		textPort = new JTextField();
-		textPort.setText("Address");
-		textPort.setColumns(10);
-		textPort.setBounds(80, 170, 134, 30);
-		contentPane.add(textPort);
+		txtAddress = new JTextField();
+		txtAddress.setText("Address");
+		txtAddress.setColumns(10);
+		txtAddress.setBounds(80, 170, 134, 30);
+		contentPane.add(txtAddress);
 		
 		JLabel lblPort = new JLabel("Port:");
 		lblPort.setBounds(131, 226, 31, 30);
 		contentPane.add(lblPort);
 		
-		txtAddress = new JTextField();
-		txtAddress.setText("Port");
-		txtAddress.setColumns(10);
-		txtAddress.setBounds(80, 267, 134, 30);
-		contentPane.add(txtAddress);
+		textPort = new JTextField();
+		textPort.setText("Port");
+		textPort.setColumns(10);
+		textPort.setBounds(80, 267, 134, 30);
+		contentPane.add(textPort);
 		
 		JButton btnNewButton = new JButton("Login");
-		btnNewButton.addActionListener(button);
+		btnNewButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				System.out.println("Logging in...");
+				String name = txtName.getText();
+				String address = txtAddress.getText();
+				int port = Integer.parseInt(textPort.getText());
+				login(name, address, port);
+			}
+		});
 		btnNewButton.setBounds(104, 338, 89, 23);
 		contentPane.add(btnNewButton);
 	}
+	
+	private void login (String name, String IP, int port){
+		dispose();
+		System.out.println(name + IP + port + "");
+	}
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					login frame = new login();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
 }
