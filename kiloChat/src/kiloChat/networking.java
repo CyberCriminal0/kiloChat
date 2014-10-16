@@ -34,7 +34,7 @@ public class networking {
 		
 	}
 	
-	protected String recieve(){
+	protected String receive(){
 		byte[] data = new byte[1024];
 		DatagramPacket packet = new DatagramPacket(data, data.length);
 		
