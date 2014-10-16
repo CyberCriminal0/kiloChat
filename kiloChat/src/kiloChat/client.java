@@ -65,7 +65,7 @@ public class client extends JFrame {
 		console("Working...");
 		console("Hello " + this.name + ", now attempting connection to " + address + ":" + port);
 		String welcome = name + " has joined";
-		boolean connected = socket1.connect(address, port);
+		boolean connected = socket1.connect(address);
 		
 		if(!connected){
 			System.err.println("Connection failed! :( ");
