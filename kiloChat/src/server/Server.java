@@ -21,12 +21,14 @@ public class Server implements Runnable{
 		}
 	
 		
-		run = new Thread(this, "Start");
+		run = new Thread(this, "Server");
+		run.start();
 	}
 
 
 	public void run() {
 		on = true;
+		System.out.println("Started server on port " + port);
 		manageClients();
 		receive();
 	}
@@ -40,7 +42,7 @@ public class Server implements Runnable{
 				}
 			}
 		};
-		
+		manager.start();
 	}
 	
 	private void receive(){
@@ -56,8 +58,11 @@ public class Server implements Runnable{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					String string = new String(packet.getData());
+					System.out.println(string);
 				}
 			}
 		};
+		receive.start();
 	}
 }

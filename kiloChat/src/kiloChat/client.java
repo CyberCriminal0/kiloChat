@@ -51,10 +51,12 @@ public class client extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	networking socket1 = new networking();
+	
 	public client(String name, String address, int port) {
 		setTitle("Kilochat Client");
 		
-		networking socket1 = new networking();
+
 		
 		this.name = name;
 		this.IP = address;
@@ -62,10 +64,11 @@ public class client extends JFrame {
 		newWindow();
 		console("Working...");
 		console("Hello " + this.name + ", now attempting connection to " + address + ":" + port);
+		String welcome = name + " has joined";
 		boolean connected = socket1.connect(address, port);
 		
 		if(!connected){
-			System.err.println("Connection failed!");
+			System.err.println("Connection failed! :( ");
 			console("Connection failed!");
 		}
 		
@@ -163,6 +166,7 @@ public class client extends JFrame {
 		if (message.equals("")) return;
 		message = name + ": " + message;
 		console(message);
+		socket1.send(message.getBytes());
 		txtMessageBox.setText("");
 		
 		

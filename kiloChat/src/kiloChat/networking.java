@@ -14,12 +14,12 @@ public class networking {
 	protected InetAddress ip;
 	protected int dataport;
 	
-	protected boolean connect(String address, int port){
+	protected boolean connect(String address){
 		
 		
 		try {
-			this.dataport = port;
-			socket = new DatagramSocket(port);
+			//this.dataport = port;
+			socket = new DatagramSocket();
 			this.ip = InetAddress.getByName(address);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();

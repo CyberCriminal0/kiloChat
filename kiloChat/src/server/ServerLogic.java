@@ -18,6 +18,9 @@ public class ServerLogic {
 		}
 		port = Integer.parseInt(args[0]);
 		new ServerLogic(port);
+		
+		
+		
 	}
 	
 }
