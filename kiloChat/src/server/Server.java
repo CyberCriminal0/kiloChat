@@ -4,9 +4,19 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Server implements Runnable{
+	
+	
+	//this needs explaining...
+	private List<connClient> clients = new ArrayList<connClient>();
 
+	
+	
+	
+	
 	private DatagramSocket socket;
 	private int port;
 	private boolean on = false;
@@ -59,6 +69,10 @@ public class Server implements Runnable{
 						e.printStackTrace();
 					}
 					String string = new String(packet.getData());
+					
+					
+					//how to get name?
+					//clients.add(new connClient( , packet.getAddress(), packet.getPort(), ))
 					System.out.println(string);
 				}
 			}
